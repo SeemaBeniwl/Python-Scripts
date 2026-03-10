@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Weather App - Home{% endblock %}
+
+{% block content %}
+<section class="search-section">
+    <form method="POST" action="/weather" class="search-form">
+        <div class="form-group">
+            <label for="city">Enter City Name:</label>
+            <input 
+                type="text" 
+                id="city" 
+                name="city" 
+                placeholder="e.g., London, New York, Paris..." 
+                required 
+                autofocus
+                class="search-input"
+            >
+        </div>
+        <button type="submit" class="search-btn">Search Weather</button>
+    </form>
+</section>
+
+<section class="info-section">
+    <h2>How to Use</h2>
+    <ol>
+        <li>Enter any city name in the search box</li>
+        <li>Click the "Search Weather" button</li>
+        <li>View current weather conditions with icons</li>
+        <li>See temperature, humidity, wind speed, and more</li>
+    </ol>
+</section>
+
+<section class="features-section">
+    <h2>Features</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <span class="feature-icon">🌡️</span>
+            <h3>Temperature</h3>
+            <p>Current and "feels like" temperature</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">💨</span>
+            <h3>Wind Speed</h3>
+            <p>Know the wind conditions</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">💧</span>
+            <h3>Humidity</h3>
+            <p>Check moisture levels</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🎯</span>
+            <h3>Pressure</h3>
+            <p>Atmospheric pressure data</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

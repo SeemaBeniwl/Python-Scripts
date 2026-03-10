@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Weather App - Results{% endblock %}
+
+{% block content %}
+<div class="navigation">
+    <a href="/" class="back-btn">← Back to Search</a>
+</div>
+
+{% if weather %}
+<section class="weather-section">
+    <div class="weather-card">
+        <div class="weather-header">
+            <h2>{{ weather.city }}, {{ weather.country }}</h2>
+            <span class="weather-icon">{{ weather.icon }}</span>
+        </div>
+        
+        <div class="weather-main">
+            <div class="temperature">
+                <span class="temp-value">{{ weather.temperature }}°C</span>
+                <span class="weather-description">{{ weather.description }}</span>
+            </div>
+        </div>
+        
+        <div class="feels-like">
+            Feels like <span class="feels-like-temp">{{ weather.feels_like }}°C</span>
+        </div>
+        
+        <div class="weather-details">
+            <div class="detail-item">
+                <strong>🌡️ Temperature</strong>
+                <span>{{ weather.temperature }}°C</span>
+            </div>
+            <div class="detail-item">
+                <strong>💧 Humidity</strong>
+                <span>{{ weather.humidity }}%</span>
+            </div>
+            <div class="detail-item">
+                <strong>💨 Wind Speed</strong>
+                <span>{{ weather.wind_speed }} m/s</span>
+            </div>
+            <div class="detail-item">
+                <strong>🎯 Pressure</strong>
+                <span>{{ weather.pressure }} hPa</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif error %}
+<section class="error-section">
+    <div class="error-card">
+        <span class="error-icon">❌</span>
+        <h2>Error</h2>
+        <p class="error-message">{{ error }}</p>
+    </div>
+</section>
+
+{% else %}
+<section class="empty-section">
+    <div class="empty-card">
+        <span class="empty-icon">🔍</span>
+        <h2>No Weather Data</h2>
+        <p>Search for a city to see its weather information.</p>
+    </div>
+</section>
+{% endif %}
+
+<section class="search-again-section">
+    <form method="POST" action="/weather" class="search-form" style="margin-top: 2rem;">
+        <div class="form-group">
+            <input 
+                type="text" 
+                name="city" 
+                placeholder="Search another city..." 
+                class="search-input"
+            >
+        </div>
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+</section>
+{% endblock %}
